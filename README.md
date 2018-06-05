@@ -9,5 +9,12 @@ python setup.py install
 ```
 should do the trick.
 
+## Usage
+```
+xi_plus = pycl2xi.fftlog.Cl2xi(Cl, ell, theta, bessel_order=0)
+xi_minus = pycl2xi.fftlog.Cl2xi(Cl, ell, theta, bessel_order=4)
+```
+The ranges of ell used for FFTLog can be set with `ell_min_fftlog`, `ell_max_fftlog`, and `n_ell_fftlog`.
+
 ## Testing
 There is currently one test in `test/` that compares the correlation functions of this module with that of CCL. Passing `--plot` to `test_against_ccl.py` creates a plot of the fractional difference.
