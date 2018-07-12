@@ -22,6 +22,7 @@ def _get_lib():
                                         os.path.dirname(__file__),
                                         "_fftlog.so"
                                        )
+        libname = glob.glob(globable_libname)
 
     if len(libname) < 1:
         raise ImportError("Can't find fftlog C library. Check that this is not executed from the package directory.")
