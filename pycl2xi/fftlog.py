@@ -7,14 +7,22 @@ def _get_lib():
     import sys
     import glob
 
-    globable_libname = os.path.join(
-                                os.path.dirname(__file__),
-                                "_fftlog.cpython-{}{}*-{}.so".format(
-                                                            sys.version_info[0], 
-                                                            sys.version_info[1], 
-                                                            sys.platform)
-                                    )
-    libname = glob.glob(globable_libname)
+    try:
+        globable_libname = os.path.join(
+                                        os.path.dirname(__file__),
+                                        "_fftlog.cpython-{}{}*-{}.so".format(
+                                                                             sys.version_info[0], 
+                                                                             sys.version_info[1], 
+                                                                             sys.platform)
+                                       )
+    
+        libname = glob.glob(globable_libname)
+    except:
+        globable_libname = os.path.join(
+                                        os.path.dirname(__file__),
+                                        "_fftlog.so"
+                                       )
+
     if len(libname) < 1:
         raise ImportError("Can't find fftlog C library. Check that this is not executed from the package directory.")
     else:
