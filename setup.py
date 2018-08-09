@@ -10,7 +10,8 @@ import shutil
 fftlog_module = Extension( name="pycl2xi._fftlog",
                            sources=["src/fftlog.c"],
                            depends=["src/fftlog.h"],
-                           libraries=["fftw3"]
+                           libraries=["fftw3"],
+                           extra_compile_args=["-std=gnu99"]
                            )
 
 class Uninstall(DistutilsInstall):
